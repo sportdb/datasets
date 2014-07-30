@@ -1,5 +1,5 @@
 
-module SportDb
+module FootballDb
   module Model
 
 # PlayerStat
@@ -32,11 +32,15 @@ module SportDb
 
 class PlayerStat < ActiveRecord::Base
 
-  has_one :team
-  has_one :game
-  has_one :event
-  belongs_to :person, :class_name => 'PersonDb::Model::Person', :foreign_key => 'person_id'
+  belongs_to :person, class_name: 'PersonDb::Model::Person', foreign_key: 'person_id'
 
-  end # class
+  belongs_to :team
+  belongs_to :game
+  belongs_to :event
+
+end # class PlayerStat
+
+
   end # module Model
-end # module SportDb
+end # module FootballDb
+
