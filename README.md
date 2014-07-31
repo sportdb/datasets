@@ -13,7 +13,7 @@
 TBD
 
 
-Player Stats Example - [`2014/squads/chicago.csv`](test/data/major-league-soccer/2014/squads/chicago.csv):
+Player Stats Example - [`major-league-soccer/2014/squads/chicago.csv`](test/data/major-league-soccer/2014/squads/chicago.csv):
 
 ~~~
 Name, Pos, Starts +SubIns, Saves [GK], GoalsConceded [GK], TotalGoals, TotalShots (ShotsOnTarget), GoalAssists, FoulsCommitted-FoulsSuffered, YellowCards/RedCards, Wins-Losses-Draws
