@@ -1,4 +1,4 @@
-# football.db  -  sport.db addon for football stats n more
+# footballdb - sport.db addon for football stats n more
 
 
 * home  :: [github.com/sportdb/football.db.ruby](https://github.com/sportdb/football.db.ruby)
@@ -15,7 +15,7 @@ TBD
 
 ## License
 
-The `football.db` scripts are dedicated to the public domain.
+The `footballdb` scripts are dedicated to the public domain.
 Use it as you please with no restrictions whatsoever.
 
 
