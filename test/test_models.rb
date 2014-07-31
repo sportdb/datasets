@@ -16,8 +16,6 @@ class TestModels < MiniTest::Unit::TestCase
     SportDb.delete!
     FootballDb.delete!
     PersonDb.delete!
-
-    SportDb.read_builtin    ## add (builtin) seasons (e.g. 2014)
   end
 
   def test_stats

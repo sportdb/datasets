@@ -17,13 +17,34 @@ class TestReader < MiniTest::Unit::TestCase
     FootballDb.delete!
     PersonDb.delete!
 
-    SportDb.read_builtin    ## add (builtin) seasons (e.g. 2014)
+    add_mls_2014
   end
 
-  def test_stats_reader
+  def add_mls_2014
+    SportDb.read_builtin    ## add (builtin) seasons (e.g. 2014)
 
+    us   = Country.create!( key: 'us', name: 'United States', code: 'USA', pop: 1, area: 1)
+
+    ## fix: change title: to name:
+    League.create!( key: 'mls', title: 'Major League Soccer', country_id: us.id )
+    Team.create!( key: 'chicago', title: 'Chicago Fire', code: 'CHI', country_id: us.id )
+
+    assert_equal 1, League.count
+    assert_equal 1, Team.count
+
+    ### todo/fix: change/will get renamed to MatchReader
+    gamereader = GameReader.new( FootballDb.test_data_path )
+    gamereader.read( 'major-league-soccer/2014/mls' )
+
+    assert_equal 1, Event.count
+    
+    mls = Event.find_by_key!( 'mls.2014' )
+    assert_equal 1, mls.teams.count   # note: for testing only one team included for now (chicago)
+  end
+
+
+  def test_stats_reader
     assert_equal 0, Person.count
-    assert_equal 0, Team.count
     assert_equal 0, Roster.count    ## note: will get renames to Squad
     assert_equal 0, PlayerStat.count
 
@@ -33,14 +54,9 @@ class TestReader < MiniTest::Unit::TestCase
     quincyamarikwa = Person.create!( key: 'quincyamarikwa', name: 'Quincy Amarikwa' )
 
     assert_equal 3, Person.count
-
-#    us = Country.create!( key: 'us', name: 'United States', code: 'USA', pop: 1, area: 1)
-#    mls  = League.create!( key: 'mls', name: 'Major League Soccer', country_id: us_id )    
     
-#    chicago = Team.create!( key: 'chicago', name: 'Chicago Fire', code: 'CHI', country_id: us.id )
-
-#    assert_equal 1, League.count
-#    assert_equal 1, Team.count
+    mls     = Event.find_by_key!( 'mls.2014' )
+    chicago = Team.find_by_key!( 'chicago' )
   end
 
 
