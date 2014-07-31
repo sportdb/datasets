@@ -5,10 +5,10 @@ Hoe.spec 'footballdb' do
 
   self.version = FootballDb::VERSION
 
-  self.summary = 'footballdb -  football.db.stats - add-on to sport.db for football stats etc.'
+  self.summary = 'footballdb - sport.db addon for football stats n more'
   self.description = summary
 
-  self.urls = ['https://github.com/sportdb/football.db.stats']
+  self.urls = ['https://github.com/sportdb/football.db.ruby']
 
   ## note: does not work - no authors defined? only author
   ## self.authors = [ 'Carl Svensson', 'Gerald Bauer' ]
@@ -18,7 +18,7 @@ Hoe.spec 'footballdb' do
   developer 'Gerald Bauer',  'opensport@googlegroups.com'
 
   # switch extension to .markdown for gihub formatting
-  self.readme_file = 'README.md'
+  self.readme_file  = 'README.md'
   self.history_file = 'HISTORY.md'
 
   self.licenses = ['Public Domain']
