@@ -43,6 +43,11 @@ module FootballDb
     CreateDb.new.up
     ## ConfDb::Model::Prop.create!( key: 'db.schema.football.version', value: VERSION )
   end
+  
+  def self.delete!
+    ## fix/todo: move into deleter class (see worlddb,sportdb etc.)
+    Model::PlayerStat.delete_all
+  end
 
 end  # module FootballDb
 
