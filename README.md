@@ -1,4 +1,4 @@
-# footballdb -  football.db -  sport.db addon for football stats n more
+# football.db  -  sport.db addon for football stats n more
 
 
 * home  :: [github.com/sportdb/football.db.ruby](https://github.com/sportdb/football.db.ruby)
