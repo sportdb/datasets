@@ -32,9 +32,13 @@ class TestReader < MiniTest::Unit::TestCase
     assert_equal 1, League.count
     assert_equal 1, Team.count
 
+    ### todo/fix:
+    ## juse EventReader instead of GameReader
+    ##  remove mls.txt empty fixture file
+
     ### todo/fix: change/will get renamed to MatchReader
-    gamereader = GameReader.new( FootballDb.test_data_path )
-    gamereader.read( 'major-league-soccer/2014/mls' )
+    reader = GameReader.new( FootballDb.test_data_path )
+    reader.read( 'major-league-soccer/2014/mls' )
 
     assert_equal 1, Event.count
     
@@ -49,14 +53,25 @@ class TestReader < MiniTest::Unit::TestCase
     assert_equal 0, PlayerStat.count
 
     ## now add some persons
-    seanjohnson    = Person.create!( key: 'seanjohnson',    name: 'Sean Johnson' )
-    gregcochrane   = Person.create!( key: 'gregcochrane',   name: 'Greg Cochrane' )
-    quincyamarikwa = Person.create!( key: 'quincyamarikwa', name: 'Quincy Amarikwa' )
+    ##
+    #  todo/fix: SquadsReader -  for mapping do NOT depend on country for clubs
 
-    assert_equal 3, Person.count
+#    seanjohnson    = Person.create!( key: 'seanjohnson',    name: 'Sean Johnson' )
+#    gregcochrane   = Person.create!( key: 'gregcochrane',   name: 'Greg Cochrane' )
+#    quincyamarikwa = Person.create!( key: 'quincyamarikwa', name: 'Quincy Amarikwa' )
+
+#    assert_equal 3, Person.count
     
     mls     = Event.find_by_key!( 'mls.2014' )
     chicago = Team.find_by_key!( 'chicago' )
+    
+    squadreader = SquadReader.new( FootballDb.test_data_path )
+    squadreader.read( 'major-league-soccer/2014/squads/chicago', team_id: chicago.id, event_id: mls.id )
+    
+    assert_equal 3, Roster.count   ## note: will get renames to Squad
+    
+    statreader = PlayerStatReader.new( FootballDb.test_data_path )
+    statreader.read( 'major-league-soccer/2014/squads/chicago', team_id: chicago.id, event_id: mls.id )
   end
 
 

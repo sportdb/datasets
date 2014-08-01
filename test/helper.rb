@@ -24,24 +24,24 @@ Event       = SportDb::Model::Event
 Team        = SportDb::Model::Team
 Roster      = SportDb::Model::Roster
 
-PlayerStat  = FootballDb::Model::PlayerStat
+PlayerStat  = SportDb::Model::PlayerStat
 
 
 
 ####################
 # Reader shortcuts
 
-Reader             = SportDb::Reader
 TeamReader         = SportDb::TeamReader
-AssocReader        = SportDb::AssocReader
 SeasonReader       = SportDb::SeasonReader
 LeagueReader       = SportDb::LeagueReader
 EventReader        = SportDb::EventReader
 GameReader         = SportDb::GameReader
 SquadReader        = SportDb::SquadReader
-RaceTeamReader     = SportDb::RaceTeamReader
+
+PlayerStatReader   = SportDb::PlayerStatReader
 
 PersonReader       = PersonDb::PersonReader
+
 
 #################################
 # setup db -> schema / tables

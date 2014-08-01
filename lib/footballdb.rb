@@ -6,20 +6,18 @@
 ##   assume sportdb required
 
 
+require 'csv'    ##  todo: add/move require to sportdb
+
+
+#########
 # our own code
 
 require 'footballdb/version'    # let version always go first
 
 require 'footballdb/models/stats/player_stat'
-
 require 'footballdb/models/person'
 
-
-## add backwards compatible n convenience namespace
-###  move to forward.rb ?? - why? why not??
-module FootballDb
-  Models = Model
-end
+require 'footballdb/readers/player_stat'
 
 
 require 'footballdb/schema'       # NB: requires sportdb/models (include SportDB::Models)
@@ -46,7 +44,7 @@ module FootballDb
   
   def self.delete!
     ## fix/todo: move into deleter class (see worlddb,sportdb etc.)
-    Model::PlayerStat.delete_all
+    SportDb::Model::PlayerStat.delete_all
   end
 
 end  # module FootballDb

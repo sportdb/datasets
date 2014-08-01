@@ -12,7 +12,7 @@ module PersonDb
 class Person
 
   ## todo/check: make more specific  - that is, use team_stats, all_time_stats etc. and use has_one!
-  has_many :stats, class_name: 'FootballDb::Model::PlayerStat'
+  has_many :stats, class_name: 'SportDb::Model::PlayerStat'
 
 end  # class Person
 

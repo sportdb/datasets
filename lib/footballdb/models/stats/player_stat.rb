@@ -1,5 +1,8 @@
 
-module FootballDb
+###
+# note: lets us SportDb::Model for now !! (and NOT FootballDb::Model)
+
+module SportDb
   module Model
 
 # PlayerStat
@@ -42,5 +45,5 @@ end # class PlayerStat
 
 
   end # module Model
-end # module FootballDb
+end # module SportDb
 
